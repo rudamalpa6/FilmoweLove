@@ -1,0 +1,40 @@
+﻿@model FilmoweLove.Models.NewSeries
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Opis Serialu @Html.DisplayFor(model => model.Nazwa_serialu)</h1>
+
+<br />
+<br />
+
+<hr />
+
+
+
+
+<div class="jumbotron" style="height:550px!important;">
+    <h1 class="display-3" style="margin-bottom:2%!important;">@Html.DisplayFor(model => model.Nazwa_serialu)</h1>
+    <hr class="my-4">
+    <p class="lead">
+
+        <div style="float:left;height:100%; margin-right:3%;">
+            <img src="@Html.DisplayFor(model => model.okladka)" width="200" height="300" />
+        </div>
+        <div style="height:220px;">
+            @Html.DisplayFor(model => model.info)
+        </div>
+    </p>
+    <hr class="my-4">
+    <p>Ilość sezonów: @Html.DisplayFor(model => model.ilosc_sezonow) | Rok wydania: @Html.DisplayFor(model => model.Data_wydania)  | Ocena: STATYCZNE 5   | </p>
+
+
+    
+
+
+</div>
+
+
+
+

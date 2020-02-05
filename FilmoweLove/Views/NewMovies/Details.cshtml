@@ -1,0 +1,58 @@
+﻿@model FilmoweLove.Models.NewMovies
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Opis filmu @Html.DisplayFor(model => model.Nazwa_filmu)</h1>
+
+<br />
+<br />
+
+<hr />
+
+
+
+
+<div class="jumbotron" style="height:800px!important;">
+    <h1 class="display-3" style="margin-bottom:2%!important;">@Html.DisplayFor(model => model.Nazwa_filmu)</h1>
+    <hr class="my-4">
+    <p class="lead">
+
+        <div style="float:left;height:100%; margin-right:3%;">
+            <img src="@Html.DisplayFor(model => model.okladka)" width="200" height="300" />
+        </div>
+        <div style="height:400px">
+            <video id="videoplayer" src="~/videotest1/ero.mp4" controls width="640" height="360" />
+
+           
+
+        </div>
+       
+
+
+
+        <div>
+            <br>
+            SRCE:@Html.DisplayFor(model => model.srce)
+            <br>
+
+
+            @Html.DisplayFor(model => model.info)
+
+        </div>
+
+
+
+    </p>
+    <hr class="my-4">
+    <p>Czas trwania: @Html.DisplayFor(model => model.Dlugosc_filmu) min. | Rok wydania: @Html.DisplayFor(model => model.Data_wydania)  | Ocena: STATYCZNE 5   | </p>
+
+</div>
+
+
+
+
+
+
+

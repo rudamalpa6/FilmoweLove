@@ -1,0 +1,69 @@
+﻿@model IEnumerable<FilmoweLove.Models.NewSeries>
+
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>SerialeNowe</h1>
+
+
+<p>
+    @if (SignInManager.IsSignedIn(User))
+    {
+    <p>
+        <a asp-action="Create">Dodaj nowy serial do bazy</a>
+    </p>
+}
+
+    @foreach (var item in Model)
+    {
+
+
+        <div class="card text-white bg-primary mb-3" style="max-width: 20rem;float:left!important;margin-right:3%!important;  min-height:520px;">
+
+            <div class="card-header"> @Html.DisplayFor(modelItem => item.Nazwa_serialu)</div>
+
+            <div class="card-body">
+                <h4 class="card-title">
+                    <img src="@Html.DisplayFor(modelItem => item.okladka)" width="200" height="300" />
+                </h4>
+                <p class="card-text">
+
+
+
+                    <a asp-action="Details" asp-route-id="@item.ID"> <button type="button" class="btn btn-secondary">Opis</button></a>
+
+
+
+
+
+                </p>
+                <p class="card-text">
+                    Ilość sezonów:  @Html.DisplayFor(modelItem => item.ilosc_sezonow)<br>
+                    Data wydania:  @Html.DisplayFor(modelItem => item.Data_wydania)<br>
+
+
+
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                        <a asp-action="Edit" asp-route-id="@item.ID"><button type="button" class="btn btn-secondary">Edytuj</button></a>
+
+                        <a asp-action="Delete" asp-route-id="@item.ID"><button type="button" class="btn btn-secondary">Usuń</button></a>
+
+
+                    }
+                </p>
+            </div>
+
+        </div>
+
+
+
+    }
+
+

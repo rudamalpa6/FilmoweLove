@@ -1,0 +1,69 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@model IEnumerable<FilmoweLove.Models.Series>
+
+@{
+    ViewData["Title"] = "Seriale";
+}
+
+<h1>Seriale</h1>
+@if (SignInManager.IsSignedIn(User))
+{
+    <p>
+        <a asp-action="Create">Dodaj serial</a>
+    </p>
+}
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col"> 
+                @Html.DisplayNameFor(model => model.Nazwa)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.LiczbaSezonow)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.Data)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.Ocena)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nazwa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LiczbaSezonow)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Data)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ocena)
+            </td>
+            <td>
+
+                <button type="button" class="btn btn-primary">Oglądaj</button>
+
+            </td>
+            @if (SignInManager.IsSignedIn(User))
+            {
+                <td>
+
+                    <a asp-action="Edit" asp-route-id="@item.ID">Edytuj</a> |
+                    <a asp-action="Details" asp-route-id="@item.ID">Szczegóły</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ID">Usuń</a>
+                </td>
+            }
+
+        </tr>
+        }
+    </tbody>
+</table>
